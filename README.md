@@ -29,3 +29,23 @@ tests/test_auth.py           36      5    86%
 ---------------------------------------------
 TOTAL                       185     16    91%
 ```
+
+## FAQ
+
+### Why do you return the access token in the response content and why do you set the refresh token as a cookie?
+
+I tried to find the answer online to the question of **_Where do I store JWT tokens on client side?_**, but I mostly got confused by all the contradicting answers from the bootcamp security experts. The only thing I am fairly certain at is that the refresh token should be stored in a http-only cookie. Maybe the access token should live there too, idk I am not a frontend expert. I decided to store the access token in memory on the client instead, maybe because I found more answers saying that. If you know the most secure way of storing JWT tokens and you have the time to write it down in an issue, then please open one and provide something that supports your claim, so I can understand the threats and considerations.
+
+### Why JWT? Why not sessions?
+
+JWT doesn't require storing anything extra on the backend and so it is less of a headache for me.
+
+If you wan't someone to convince you, here are two videos:
+
+[Session vs JWT](https://www.youtube.com/watch?v=fyTxwIa-1U0)
+
+[Why is JWT popular?](https://www.youtube.com/watch?v=P2CPd9ynFLg)
+
+### So what is actually a JWT?
+
+Probably the best resource to answer this question would be [RFC 7519 - JSON Web Token (JWT)](https://datatracker.ietf.org/doc/html/rfc7519#section-11)

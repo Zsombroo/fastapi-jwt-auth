@@ -25,7 +25,7 @@ def authenticate_user(
 
 
 def login(
-    data: dict[str, str]
+    data: dict[str, str],
 ) -> dict[str, str]:
     user = authenticate_user(data["username"], data["password"])
 

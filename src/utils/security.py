@@ -110,7 +110,7 @@ def create_refresh_token(
 
 
 def current_user(
-    token: Annotated[User, Depends(oauth2_scheme)]
+    token: Annotated[User, Depends(oauth2_scheme)],
 ):
     username = verify_token(token)
     user = get_user(username=username)

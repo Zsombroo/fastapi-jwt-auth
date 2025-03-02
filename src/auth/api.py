@@ -17,12 +17,12 @@ router = APIRouter(prefix="/auth", tags=["auth"])
 @router.post("/login")
 def api_login(
     response: Response,
-    form_data: Annotated[OAuth2PasswordRequestForm, Depends()]
+    form_data: Annotated[OAuth2PasswordRequestForm, Depends()],
 ) -> JSONResponse:
     tokens = login(
         data={
             "username": form_data.username,
-            "password": form_data.password
+            "password": form_data.password,
         },
     )
 
@@ -42,7 +42,7 @@ def api_login(
 @router.post(path='/refresh')
 async def api_refresh(
     response: Response,
-    refresh_token: str = Depends(get_refresh_token)
+    refresh_token: str = Depends(get_refresh_token),
 ) -> JSONResponse:
     tokens = refresh(
         old_refresh_token=refresh_token,

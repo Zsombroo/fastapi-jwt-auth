@@ -13,7 +13,7 @@ router = APIRouter(prefix="/user", tags=["user"])
 
 @router.get("/profile")
 def api_profile(
-    user: Annotated[User, Depends(current_user)]
+    user: Annotated[User, Depends(current_user)],
 ):
     logger.debug(user)
     return "Success"
