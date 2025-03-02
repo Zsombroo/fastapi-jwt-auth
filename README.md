@@ -40,24 +40,25 @@ Name                      Stmts   Miss  Cover
 ---------------------------------------------
 src/__init__.py               0      0   100%
 src/auth/__init__.py          0      0   100%
-src/auth/api.py              22      0   100%
+src/auth/api.py              21      0   100%
 src/auth/controller.py       26      1    96%
+src/auth/model.py             3      0   100%
 src/main.py                   6      0   100%
 src/users/__init__.py         0      0   100%
-src/users/api.py             11      2    82%
-src/users/model.py            5      0   100%
+src/users/api.py             12      0   100%
+src/users/model.py            7      0   100%
 src/users/repository.py       5      0   100%
 src/utils/__init__.py         0      0   100%
 src/utils/logging.py          3      0   100%
-src/utils/security.py        54      8    85%
+src/utils/security.py        54      4    93%
 src/utils/settings.py        16      0   100%
 tests/__init__.py             0      0   100%
-tests/test_auth.py           36      5    86%
+tests/test_auth.py           36      0   100%
 ---------------------------------------------
-TOTAL                       184     16    91%
+TOTAL                       189      5    97%
 
 
-==================== 4 passed in 0.95s ====================
+========================= 5 passed in 1.19s =========================
 ```
 
 ## FAQ

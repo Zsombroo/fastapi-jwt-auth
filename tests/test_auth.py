@@ -10,21 +10,7 @@ client = TestClient(
 )
 
 
-@pytest.fixture
 def test_user_login_1():
-    """ Happy path """
-    response = client.post(
-        url="/auth/login",
-        data={"username": "testuser", "password": "testpassword"}
-    )
-    assert response.status_code == 200
-    assert "refresh_token" in response.cookies
-    assert b"access_token" in response.content
-
-    return response.cookies
-
-
-def test_user_login_2():
     """ Incorrect creds """
     response = client.post(
         url="/auth/login",
@@ -43,8 +29,30 @@ def test_refresh_1():
     assert response.content == b'{"detail":"Refresh token not found"}'
 
 
-def test_refresh_2(test_user_login_1):
-    client.cookies = test_user_login_1
+def test_protected_path_1():
+    response = client.get(
+        url="/user/profile",
+    )
+    assert response.status_code == 401
+    assert response.content == b'{"detail":"Not authenticated"}'
+
+
+@pytest.fixture
+def test_user_login_2():
+    """ Happy path """
+    response = client.post(
+        url="/auth/login",
+        data={"username": "testuser", "password": "testpassword"}
+    )
+    assert response.status_code == 200
+    assert "refresh_token" in response.cookies
+    assert b"access_token" in response.content
+
+    return response.cookies
+
+
+def test_refresh_2(test_user_login_2):
+    client.cookies = test_user_login_2
     response = client.post(
         url="/auth/refresh",
     )
@@ -53,8 +61,8 @@ def test_refresh_2(test_user_login_1):
     assert b"access_token" in response.content
 
 
-def test_protected_path(test_user_login_1):
-    token = test_user_login_1.get("refresh_token")
+def test_protected_path_2(test_user_login_2):
+    token = test_user_login_2.get("refresh_token")
     headers = {
         "Authorization": f"Bearer {token}"
     }
@@ -63,12 +71,4 @@ def test_protected_path(test_user_login_1):
         headers=headers,
     )
     assert response.status_code == 200
-    assert response.content == b'"Success"'
-
-
-def test_protected_path():
-    response = client.get(
-        url="/user/profile",
-    )
-    assert response.status_code == 401
-    assert response.content == b'{"detail":"Not authenticated"}'
+    assert response.content == b'{"profile":"Success"}'
