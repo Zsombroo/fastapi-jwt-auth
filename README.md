@@ -38,6 +38,7 @@ $ pytest --cov
 ---------- coverage: platform linux, python 3.13.2-final-0 -----------
 Name                      Stmts   Miss  Cover
 ---------------------------------------------
+src/__init__.py               0      0   100%
 src/auth/__init__.py          0      0   100%
 src/auth/api.py              22      0   100%
 src/auth/controller.py       26      1    96%
@@ -48,12 +49,15 @@ src/users/model.py            5      0   100%
 src/users/repository.py       5      0   100%
 src/utils/__init__.py         0      0   100%
 src/utils/logging.py          3      0   100%
-src/utils/security.py        55      8    85%
+src/utils/security.py        54      8    85%
 src/utils/settings.py        16      0   100%
 tests/__init__.py             0      0   100%
 tests/test_auth.py           36      5    86%
 ---------------------------------------------
-TOTAL                       185     16    91%
+TOTAL                       184     16    91%
+
+
+==================== 4 passed in 0.95s ====================
 ```
 
 ## FAQ
