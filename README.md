@@ -4,6 +4,32 @@ This is a template project of a simple REST API which handles the authentication
 
 If you found this code and would like to use it, keep in mind that this codebase is not perfect.
 
+## How to run
+
+Set up a new env
+```
+$ python -m venv venv
+$ source venv/bin/acivate
+$ pip install -r requirements.txt
+```
+
+Run the code
+```
+$ fastapy dev --root-path . src/main.py
+```
+
+## How to test
+
+Run tests one time
+```
+$ pytest
+```
+
+Run tests automatically when you edit the code
+```
+$ pytest-watch
+```
+
 ## Test coverage report
 
 ```
