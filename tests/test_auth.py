@@ -1,6 +1,7 @@
 import pytest
 from fastapi.testclient import TestClient
 
+from . import manage_db
 from src.main import app
 
 

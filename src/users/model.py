@@ -1,9 +1,10 @@
 from pydantic import BaseModel
 
 
-class User(BaseModel):
+class UserModel(BaseModel):
+    id: int
     username: str
-    hashed_pw: str
+    hashed_password: str
     teams: list[str] = []
 
 

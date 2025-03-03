@@ -1,7 +1,7 @@
 from fastapi import HTTPException 
 from fastapi import status
 
-from src.users.model import User
+from src.users.model import UserModel
 from src.users.repository import get_user
 from src.utils.security import create_access_token
 from src.utils.security import create_refresh_token
@@ -12,10 +12,10 @@ from src.utils.security import verify_token
 def authenticate_user(
     username: str,
     password: str,
-) -> User | None:
+) -> UserModel | None:
     user = get_user(username=username)
 
-    if user is None or not verify_password(password, user.hashed_pw):
+    if user is None or not verify_password(password, user.hashed_password):
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail="Invalid username or password",

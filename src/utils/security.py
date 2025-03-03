@@ -11,7 +11,7 @@ from fastapi import status
 from fastapi.security import OAuth2PasswordBearer
 from passlib.context import CryptContext
 
-from src.users.model import User
+from src.users.model import UserModel
 from src.users.repository import get_user
 from src.utils.settings import settings
 
@@ -66,7 +66,7 @@ def verify_token(
         
 
 def create_access_token(
-    user: User,
+    user: UserModel,
 ) -> str:
     iss = settings.jwt_issuer
     sub = user.username
@@ -89,7 +89,7 @@ def create_access_token(
 
 
 def create_refresh_token(
-    user: User,
+    user: UserModel,
 ) -> str:
     iss = settings.jwt_issuer
     sub = user.username
@@ -110,7 +110,7 @@ def create_refresh_token(
 
 
 def current_user(
-    token: Annotated[User, Depends(oauth2_scheme)],
+    token: Annotated[UserModel, Depends(oauth2_scheme)],
 ):
     username = verify_token(token)
     user = get_user(username=username)

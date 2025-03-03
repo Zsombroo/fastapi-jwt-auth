@@ -1,16 +1,19 @@
-from src.users.model import User
+from src.db import get_session
+from src.db.schemas import User
+from src.users.model import UserModel
 
 
 def get_user(
     username: str,
-) -> User | None:
-    """ TODO: Implement a proper database connection and query to fetch user data
-    """
-    if username != "testuser":
-        return None
+) -> UserModel | None:
+    with next(get_session()) as session:
+        user = session.query(User).filter(User.username == username).one_or_none()
     
-    return User(
-        username="testuser",
-        hashed_pw="$2b$12$DIcc2YlzRg5A4gbXaeHKXuXwR95qHuw8QLMSedf7ZCqz5wOBFE5cq",
-        teams=["Team_A", "Team_B"],
-    )
+    if user:
+        user = UserModel(
+            id=user.id,
+            username=user.username,
+            hashed_password=user.hashed_password,
+        )
+    
+    return user

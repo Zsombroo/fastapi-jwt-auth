@@ -1,0 +1,13 @@
+services:
+  postgres:
+    container_name: TESTPG
+    image: postgres:17
+    environment:
+      - POSTGRES_USER=testuser
+      - POSTGRES_PASSWORD=testpassword
+      - POSTGRES_DB=testdb
+    ports:
+      - "5432:5432"
+    restart: always
+    command: postgres -p 5432
+   
