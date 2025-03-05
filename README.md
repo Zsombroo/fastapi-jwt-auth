@@ -35,7 +35,7 @@ $ pytest-watch
 ```
 $ pytest --cov
 
----------- coverage: platform linux, python 3.13.2-final-0 -----------
+---------- coverage: platform linux, python 3.12.7-final-0 -----------
 Name                      Stmts   Miss  Cover
 ---------------------------------------------
 src/__init__.py               0      0   100%
@@ -43,22 +43,24 @@ src/auth/__init__.py          0      0   100%
 src/auth/api.py              21      0   100%
 src/auth/controller.py       26      1    96%
 src/auth/model.py             3      0   100%
-src/main.py                   6      0   100%
+src/db/__init__.py           19      3    84%
+src/db/schemas.py            23      0   100%
+src/main.py                  14      3    79%
 src/users/__init__.py         0      0   100%
 src/users/api.py             12      0   100%
-src/users/model.py            7      0   100%
-src/users/repository.py       5      0   100%
+src/users/model.py            8      0   100%
+src/users/repository.py       9      0   100%
 src/utils/__init__.py         0      0   100%
 src/utils/logging.py          3      0   100%
-src/utils/security.py        54      4    93%
+src/utils/security.py        54      3    94%
 src/utils/settings.py        16      0   100%
-tests/__init__.py             0      0   100%
-tests/test_auth.py           36      0   100%
+tests/__init__.py            16      0   100%
+tests/test_auth.py           37      0   100%
+tests/test_db.py             24     15    38%
 ---------------------------------------------
-TOTAL                       189      5    97%
+TOTAL                       285     25    91%
 
-
-========================= 5 passed in 1.19s =========================
+====================== 5 passed, 1 warning in 9.51s =======================
 ```
 
 ## FAQ
